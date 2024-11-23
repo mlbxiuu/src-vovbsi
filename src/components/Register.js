@@ -1,16 +1,58 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 // css
 import "../style/register.css";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { useSnackbar } from "notistack";
+import Login from "./Login";
 
-const Register = () => {
-  // useEffect(() => {
-  //   document.body.classList.add("register-background");
-  //   return () => {
-  //     document.body.classList.remove("register-background");
-  //   };
-  // }, []);
+// const Register = () => {
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [errorMessage, setErrorMessage] = useState("");
+//   const { enqueueSnackbar } = useSnackbar();
+
+//   const navigate = useNavigate();
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     axios
+//       .post("http://localhost:3000/register", { name, email, password })
+//       .then((result) => {
+//         console.log(result);
+//         enqueueSnackbar("Đăng ký thành công", { variant: "success" });
+//         navigate("/login");
+//       })
+//       .catch((err) => console.log(err));
+//   };
+
+  function Register() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const { enqueueSnackbar } = useSnackbar(); // Khai báo enqueueSnackbar
+    const navigate = useNavigate();
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      axios.post('http://localhost:3000/register', { email, password, name })
+        .then(response => {
+          console.log("Đăng ký thành công!", response.data);
+          enqueueSnackbar("Đăng ký thành công!", {variant: "success"});
+          navigate("/login");
+        })
+        .catch(error => {
+          if (error.response) {
+            console.error("Lỗi:", error.response.data.message);
+            enqueueSnackbar(error.response.data.message, {variant: "error"});
+          } else {
+            console.error("Lỗi không xác định:", error.message);
+            enqueueSnackbar("Đã xảy ra lỗi không xác định.", {variant: "error"});
+          }
+        });
+    }
   return (
     <>
       <Header />
@@ -24,36 +66,35 @@ const Register = () => {
                 alt="Logo"
               />
               <h2>Đăng ký</h2>
-              <form
-                action="/api/user/register"
-                method="post"
-                id="form_register"
-              >
+              <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <input
                     type="text"
-                    name="phone"
-                    id="phone"
-                    placeholder="Số điện thoại"
+                    name="name"
+                    // id="email"
+                    placeholder="Tên"
                     required
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    name="email"
+                    // id="confirm_password"
+                    placeholder="Email"
+                    required
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
                   <input
                     type="password"
                     name="password"
-                    id="password"
+                    // id="password"
                     placeholder="Mật khẩu"
                     required
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    name="confirm_password"
-                    id="confirm_password"
-                    placeholder="Xác nhận mật khẩu"
-                    required
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
                 <div className="form-group">
@@ -61,7 +102,7 @@ const Register = () => {
                 </div>
               </form>
               <div className="link">
-                <a href="/public/login.html">Quay lại đăng nhập</a>
+                <Link to="/login">Đăng ký tài khoản</Link>
               </div>
             </div>
           </div>

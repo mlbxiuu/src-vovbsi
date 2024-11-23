@@ -3,10 +3,11 @@
 import "../style/trangchu.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from "./Header";
-import ListBenhVien from "./ListBenhVien";
+
 
 import ListBenh from "./ListBenh";
 import Footer from "./Footer";
+import HospitalList from "./HospitalList";
 
 
 const TrangChu = () => {
@@ -150,7 +151,7 @@ const TrangChu = () => {
             <div className="row">
               <div className="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <h3>BỆNH VIỆN</h3>
-                <ListBenhVien />
+                <HospitalList />
                 <h3>BỆNH THƯỜNG GẶP</h3>
                 <ListBenh />
               </div>
