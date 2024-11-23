@@ -31,7 +31,7 @@ const ListBenh = () => {
   };
 
   return (
-    <Carousel>
+    <Carousel interval={null}>
       {groupedBenh.map((group, idx) => (
         <Carousel.Item key={idx}>
           <Row>
