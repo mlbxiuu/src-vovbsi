@@ -1,0 +1,31 @@
+.admin-layout-modern {
+  display: flex;
+}
+
+.main-content-admin {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  background-color: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  padding: 20px;
+  flex: 1;
+}
+.dashboard-icon {
+  font-size: 3rem;
+  color: #4a69bd;
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+}

@@ -20,6 +20,10 @@ import HuongDanSD from "./components/HuongDanSD";
 import ChiTietHD from "./components/ChiTietHD";
 import ListBacSi from "./components/ListBacSi";
 
+import Dashboard from "./admin/Dashboard";
+import ManageAppointments from "./admin/ManageAppointments";
+import ManageDoctors from "./admin/ManageDoctors";
+import ManageHospitals from "./admin/ManageHospitals";
 
 // import TrangChu from './components/TrangChu';
 
@@ -41,6 +45,12 @@ function App() {
         <Route path="/huongdan" element={<HuongDanSD/>}/>
         <Route path="/guideline/guideline-detail" element={<ChiTietHD />} />
         <Route path="/ds-bsi" element={<ListBacSi/>} />
+
+        
+        <Route path="/admin/dashboard" element={<Dashboard />} />
+        <Route path="/admin/doctors" element={<ManageDoctors />} />
+        <Route path="/admin/hospitals" element={<ManageHospitals />} />
+        <Route path="/admin/appointments" element={<ManageAppointments />} />
       </Routes>
     </SnackbarProvider>
   );

@@ -1,0 +1,18 @@
+.admin-header-modern {
+  background: #1c2833;
+  border-bottom: 2px solid #4a69bd;
+}
+
+.header-icon {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.nav-link {
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+}

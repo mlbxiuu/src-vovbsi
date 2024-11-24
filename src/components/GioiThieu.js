@@ -48,7 +48,7 @@ const GioiThieu = () => {
                 </div>
               </div>
               <div className="col-md-3 hidden-sm hidden-xs">
-                <p>tin tức</p>
+               
               </div>
             </div>
           </div>
